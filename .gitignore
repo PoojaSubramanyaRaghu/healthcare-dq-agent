@@ -12,3 +12,6 @@ airflow.cfg
 airflow.db
 .astro/*.local.yml
 .astro/*.local.yaml
+venv/
+__pycache__/
+.env
