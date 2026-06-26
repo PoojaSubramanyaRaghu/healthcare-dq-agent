@@ -1,0 +1,24 @@
+==================== 2026-06-26T02:04:21.513154Z | 019f01ab-c27d-77b0-bd92-eb1b53cc4e4e ====================
+02:04:21.515867 [info ]: Installing dbt project and profile setup
+02:04:21.523568 [info ]: Info Created .vscode/extensions.json with dbt extension recommendation
+02:04:21.524877 [info ]: Success Project created successfully!
+02:04:21.525170 [info ]: Info Project name: jaffle_shop
+02:04:21.525187 [info ]: Info Project directory: jaffle_shop
+02:04:21.525342 [info ]: Info Setting up your profile...
+02:04:21.527251 [info ]: Info Creating new profile...
+02:07:17.717991 [error]: [IoError (dbt1001)]: Failed to get adapter selection: IO error: read interrupted
+02:07:17.851714 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' with 1 error [2m 56s]
+==================== 2026-06-26T02:07:35.808468Z | 019f01ae-b976-7ea2-b93e-0af03de8147f ====================
+02:07:35.809808 [info ]: Installing dbt project and profile setup
+02:07:35.817940 [info ]: Info Created .vscode/extensions.json with dbt extension recommendation
+02:07:35.818817 [info ]: Success Project created successfully!
+02:07:35.819114 [info ]: Info Project name: jaffle_shop
+02:07:35.819131 [info ]: Info Project directory: jaffle_shop
+02:07:35.819281 [info ]: Info Setting up your profile...
+02:07:35.820905 [info ]: Info Creating new profile...
+02:10:16.894712 [error]: [IoError (dbt1001)]: Failed to get adapter selection: IO error: read interrupted
+02:10:17.038711 [info ]: 
+==================== Execution Summary =====================
+Finished 'init' with 1 error [2m 41s]

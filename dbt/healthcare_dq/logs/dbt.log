@@ -1,0 +1,87 @@
+==================== 2026-06-26T02:14:23.291922Z | 019f01b4-f131-7880-b34f-25d10991eb7d ====================
+02:14:23.293531 [info ]: dbt-core 2.0.0-alpha.2
+02:14:23.295970 [info ]: Started loading project
+02:14:23.314118 [info ]: Loading ~/.dbt/profiles.yml
+02:14:23.321075 [info ]: Finished loading project [  0.03s]
+02:14:23.321812 [info ]: Started debugging
+02:14:23.322194 [info ]: Debugging profile: dev
+02:14:23.322226 [info ]: Debugging dbt version: 2.0.0-alpha.2
+02:14:23.322235 [info ]: Debugging platform: macos aarch64 (unix)
+02:14:23.322504 [info ]: Debugging adapter type: snowflake (remote)
+02:14:23.333920 [info ]: Debugging dependencies:
+  git: OK
+02:14:23.336184 [info ]: Debugging connection:
+  "account": "ozhdxyd-th87397",
+  "user": "POOJARAGHU",
+  "database": "HEALTHCARE_DQ",
+  "warehouse": "COMPUTE_WH",
+  "schema": "RAW",
+  "role": "ACCOUNTADMIN"
+02:14:25.976449 [info ]: Finished debugging [  2.65s]
+02:14:25.978251 [error]: [AuthenticationFailed (dbt1011)]: dbt was unable to connect to the specified database.
+The following error was returned:
+
+[Snowflake] 261004 (08004): failed to auth for unknown reason. HTTP: 404, URL: https://ozhdxyd-th87397.snowflakecomputing.com:443/session/v1/login-request?databaseName=HEALTHCARE_DQ&requestId=026f77b1-8cf7-4110-54d5-a86bc3abc1d3&request_guid=32a7747f-ccfc-41b0-5256-8d777b9fc81e&roleName=ACCOUNTADMIN&schemaName=RAW&warehouse=COMPUTE_WH
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/core/connect-data-platform/connection-profiles
+02:14:26.024611 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' with 1 error for target 'dev' [2.7s]
+==================== 2026-06-26T02:15:54.044983Z | 019f01b6-53b1-7352-b80d-dcb0a7820afb ====================
+02:15:54.046916 [info ]: dbt-core 2.0.0-alpha.2
+02:15:54.049784 [info ]: Started loading project
+02:15:54.067335 [info ]: Loading ~/.dbt/profiles.yml
+02:15:54.073166 [info ]: Finished loading project [  0.02s]
+02:15:54.073530 [info ]: Started debugging
+02:15:54.073772 [info ]: Debugging profile: dev
+02:15:54.073794 [info ]: Debugging dbt version: 2.0.0-alpha.2
+02:15:54.073801 [info ]: Debugging platform: macos aarch64 (unix)
+02:15:54.074160 [info ]: Debugging adapter type: snowflake (remote)
+02:15:54.087185 [info ]: Debugging dependencies:
+  git: OK
+02:15:54.089145 [info ]: Debugging connection:
+  "account": "th87397.us-east-1",
+  "user": "POOJARAGHU",
+  "database": "HEALTHCARE_DQ",
+  "warehouse": "COMPUTE_WH",
+  "schema": "RAW",
+  "role": "ACCOUNTADMIN"
+02:15:54.541634 [info ]: Finished debugging [  0.47s]
+02:15:54.542736 [error]: [AuthenticationFailed (dbt1011)]: dbt was unable to connect to the specified database.
+The following error was returned:
+
+[Snowflake] 261004 (08004): failed to auth for unknown reason. HTTP: 404, URL: https://th87397.us-east-1.snowflakecomputing.com:443/session/v1/login-request?databaseName=HEALTHCARE_DQ&requestId=2b0ba477-34e9-49ef-6031-d71b3a1c8bc0&request_guid=fe66e6c7-2eba-42bc-7015-f53cc02550b5&roleName=ACCOUNTADMIN&schemaName=RAW&warehouse=COMPUTE_WH
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/core/connect-data-platform/connection-profiles
+02:15:54.746682 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' with 1 error for target 'dev' [701ms]
+==================== 2026-06-26T02:18:45.516664Z | 019f01b8-f181-7901-a918-d523f4a88daf ====================
+02:18:45.518689 [info ]: dbt-core 2.0.0-alpha.2
+02:18:45.521985 [info ]: Started loading project
+02:18:45.537424 [info ]: Loading ~/.dbt/profiles.yml
+02:18:45.543301 [info ]: Finished loading project [  0.02s]
+02:18:45.543821 [info ]: Started debugging
+02:18:45.544308 [info ]: Debugging profile: dev
+02:18:45.544335 [info ]: Debugging dbt version: 2.0.0-alpha.2
+02:18:45.544343 [info ]: Debugging platform: macos aarch64 (unix)
+02:18:45.544566 [info ]: Debugging adapter type: snowflake (remote)
+02:18:45.559536 [info ]: Debugging dependencies:
+  git: OK
+02:18:45.561733 [info ]: Debugging connection:
+  "account": "th87397.ca-central-1.aws",
+  "user": "POOJARAGHU",
+  "database": "HEALTHCARE_DQ",
+  "warehouse": "COMPUTE_WH",
+  "schema": "RAW",
+  "role": "ACCOUNTADMIN"
+02:18:47.081587 [debug]: Query executed on node unknown:
+select 1 as id
+02:18:47.082833 [info ]: Debugging connection test: OK
+02:18:47.083033 [info ]: Debugged All checks passed!
+02:18:47.083554 [info ]: Finished debugging [  1.54s]
+02:18:47.121619 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' successfully for target 'dev' [1.6s]
