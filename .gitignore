@@ -18,3 +18,4 @@ __pycache__/
 venv/
 dbt/healthcare_dq/dbt_packages/
 dbt/healthcare_dq/target/
+include/data/*.csv
