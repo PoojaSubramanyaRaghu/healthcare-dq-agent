@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    database: HEALTHCARE_DQ
+    schema: RAW
+    tables:
+      - name: CMS_INPATIENT_RAW
+        description: "Raw CMS Medicare Inpatient data loaded from S3"

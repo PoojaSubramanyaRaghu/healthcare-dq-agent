@@ -10,8 +10,6 @@ clean-targets: ["target", "dbt_packages"]
 models:
   healthcare_dq:
     staging:
-      +schema: STAGING
       +materialized: view
     marts:
-      +schema: MARTS
       +materialized: table

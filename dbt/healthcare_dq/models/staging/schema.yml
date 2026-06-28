@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_cms_inpatient
+    description: "Staged CMS Medicare Inpatient data - cleaned and typed"
+    columns:
+      - name: provider_ccn
+        description: "CMS Certification Number"
+        tests:
+          - not_null
+      - name: hospital_name
+        tests:
+          - not_null
+      - name: state
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA',
+                         'HI','ID','IL','IN','IA','KS','KY','LA','ME','MD',
+                         'MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ',
+                         'NM','NY','NC','ND','OH','OK','OR','PA','RI','SC',
+                         'SD','TN','TX','UT','VT','VA','WA','WV','WI','WY',
+                         'DC','PR','VI','GU','MP','AS']
+      - name: total_discharges
+        tests:
+          - not_null
+      - name: avg_submitted_charge
+        tests:
+          - not_null
+      - name: avg_total_payment
+        tests:
+          - not_null
+      - name: avg_medicare_payment
+        tests:
+          - not_null
+      - name: drg_code
+        tests:
+          - not_null
