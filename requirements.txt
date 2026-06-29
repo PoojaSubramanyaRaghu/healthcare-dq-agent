@@ -1,1 +1,7 @@
-# Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
+streamlit==1.37.1
+snowflake-connector-python==3.18.0
+pandas
+openai
+python-dotenv
+pyopenssl==24.0.0
+cryptography==42.0.0

@@ -3,10 +3,16 @@ import snowflake.connector
 import pandas as pd
 import os
 import glob
-from dotenv import load_dotenv
 from openai import OpenAI
 
-load_dotenv('/Users/poojaraghu/Desktop/healthcare-dq-agent/.env')
+# Load credentials from Streamlit secrets or environment
+def get_secret(key):
+    try:
+        return st.secrets[key]
+    except:
+        from dotenv import load_dotenv
+        load_dotenv('/Users/poojaraghu/Desktop/healthcare-dq-agent/.env')
+        return os.getenv(key)
 
 st.set_page_config(
     page_title="Healthcare Data Quality Agent",
@@ -17,13 +23,13 @@ st.set_page_config(
 @st.cache_resource
 def get_snowflake_connection():
     return snowflake.connector.connect(
-        account=os.getenv('SNOWFLAKE_ACCOUNT'),
-        user=os.getenv('SNOWFLAKE_USER'),
-        password=os.getenv('SNOWFLAKE_PASSWORD'),
-        warehouse=os.getenv('SNOWFLAKE_WAREHOUSE'),
-        database=os.getenv('SNOWFLAKE_DATABASE'),
+        account=get_secret('SNOWFLAKE_ACCOUNT'),
+        user=get_secret('SNOWFLAKE_USER'),
+        password=get_secret('SNOWFLAKE_PASSWORD'),
+        warehouse=get_secret('SNOWFLAKE_WAREHOUSE'),
+        database=get_secret('SNOWFLAKE_DATABASE'),
         schema='RAW',
-        role=os.getenv('SNOWFLAKE_ROLE')
+        role=get_secret('SNOWFLAKE_ROLE')
     )
 
 @st.cache_data(ttl=300)
@@ -70,7 +76,16 @@ def get_state_stats():
 
 def get_incident_reports():
     reports = []
-    report_files = glob.glob('/Users/poojaraghu/Desktop/healthcare-dq-agent/reports/*.txt')
+    paths_to_try = [
+        '/Users/poojaraghu/Desktop/healthcare-dq-agent/reports/*.txt',
+        'reports/*.txt',
+        '../reports/*.txt'
+    ]
+    report_files = []
+    for path in paths_to_try:
+        report_files = glob.glob(path)
+        if report_files:
+            break
     for f in sorted(report_files, reverse=True):
         with open(f, 'r') as file:
             content = file.read()
@@ -181,11 +196,7 @@ elif page == "💬 Ask the Agent":
             st.markdown(prompt)
 
         with st.chat_message("assistant"):
-            import sys
-            sys.path.insert(0, '/Users/poojaraghu/Desktop/healthcare-dq-agent')
-            from mcp_server.healthcare_mcp import get_snowflake_connection
-
-            client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+            client = OpenAI(api_key=get_secret('OPENAI_API_KEY'))
 
             try:
                 conn = get_snowflake_connection()
