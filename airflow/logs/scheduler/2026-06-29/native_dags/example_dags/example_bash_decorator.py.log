@@ -1,0 +1,102 @@
+[2026-06-28T20:02:38.723-0400] {processor.py:161} INFO - Started process (PID=40616) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:02:38.724-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py for tasks to queue
+[2026-06-28T20:02:38.724-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:02:38.724-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:02:38.751-0400] {processor.py:840} INFO - DAG(s) 'example_bash_decorator' retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:02:38.824-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:02:38.824-0400] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-06-28T20:02:38.827-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:02:38.827-0400] {dag.py:3954} INFO - Setting next_dagrun for example_bash_decorator to None, run_after=None
+[2026-06-28T20:02:38.834-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py took 0.114 seconds
+[2026-06-28T20:04:54.423-0400] {processor.py:161} INFO - Started process (PID=44975) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:04:54.425-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py for tasks to queue
+[2026-06-28T20:04:54.426-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:04:54.426-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:04:54.447-0400] {processor.py:840} INFO - DAG(s) 'example_bash_decorator' retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:04:54.513-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:04:54.513-0400] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-06-28T20:04:54.516-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:04:54.516-0400] {dag.py:3954} INFO - Setting next_dagrun for example_bash_decorator to None, run_after=None
+[2026-06-28T20:04:54.523-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py took 0.103 seconds
+[2026-06-28T20:07:03.222-0400] {processor.py:161} INFO - Started process (PID=45085) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:07:03.223-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py for tasks to queue
+[2026-06-28T20:07:03.224-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:07:03.224-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:07:03.248-0400] {processor.py:840} INFO - DAG(s) 'example_bash_decorator' retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:07:03.317-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:07:03.317-0400] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-06-28T20:07:03.320-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:07:03.320-0400] {dag.py:3954} INFO - Setting next_dagrun for example_bash_decorator to None, run_after=None
+[2026-06-28T20:07:03.327-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py took 0.108 seconds
+[2026-06-28T20:09:18.443-0400] {processor.py:161} INFO - Started process (PID=46104) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:09:18.443-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py for tasks to queue
+[2026-06-28T20:09:18.444-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:09:18.443-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:09:18.462-0400] {processor.py:840} INFO - DAG(s) 'example_bash_decorator' retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:09:18.534-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:09:18.534-0400] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-06-28T20:09:18.538-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:09:18.538-0400] {dag.py:3954} INFO - Setting next_dagrun for example_bash_decorator to None, run_after=None
+[2026-06-28T20:09:18.800-0400] {processor.py:186} ERROR - Got an exception! Propagating...
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/dag_processing/processor.py", line 182, in _run_file_processor
+    _handle_dag_file_processing()
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/dag_processing/processor.py", line 163, in _handle_dag_file_processing
+    result: tuple[int, int] = dag_file_processor.process_file(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/dag_processing/processor.py", line 859, in process_file
+    serialize_errors = DagFileProcessor.save_dag_to_db(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/api_internal/internal_api_call.py", line 115, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/dag_processing/processor.py", line 895, in save_dag_to_db
+    import_errors = DagBag._sync_to_db(dags=dags, processor_subdir=dag_directory, session=session)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/models/dagbag.py", line 659, in _sync_to_db
+    for attempt in run_with_db_retries(logger=log):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/tenacity/__init__.py", line 347, in __iter__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/tenacity/__init__.py", line 314, in iter
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/models/dagbag.py", line 675, in _sync_to_db
+    DAG.bulk_write_to_db(dags.values(), processor_subdir=processor_subdir, session=session)
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/utils/session.py", line 76, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/models/dag.py", line 3260, in bulk_write_to_db
+    dataset_manager.create_datasets(dataset_models=new_datasets, session=session)
+  File "/opt/anaconda3/lib/python3.12/site-packages/airflow/datasets/manager.py", line 53, in create_datasets
+    session.flush()
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3449, in flush
+    self._flush(objects)
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3588, in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 3549, in _flush
+    flush_context.execute()
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 630, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 237, in save_obj
+    _emit_update_statements(
+  File "/opt/anaconda3/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1035, in _emit_update_statements
+    raise orm_exc.StaleDataError(
+sqlalchemy.orm.exc.StaleDataError: UPDATE statement on table 'serialized_dag' expected to update 1 row(s); 0 were matched.
+[2026-06-28T20:12:48.668-0400] {processor.py:161} INFO - Started process (PID=46931) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:12:48.669-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py for tasks to queue
+[2026-06-28T20:12:48.669-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:12:48.669-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:12:48.691-0400] {processor.py:840} INFO - DAG(s) 'example_bash_decorator' retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py
+[2026-06-28T20:12:48.764-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:12:48.764-0400] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-06-28T20:12:48.768-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:12:48.768-0400] {dag.py:3954} INFO - Setting next_dagrun for example_bash_decorator to None, run_after=None
+[2026-06-28T20:12:48.775-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/example_bash_decorator.py took 0.109 seconds

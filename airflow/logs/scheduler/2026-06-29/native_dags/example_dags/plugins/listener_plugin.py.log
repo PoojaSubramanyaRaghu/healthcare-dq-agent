@@ -1,0 +1,55 @@
+[2026-06-28T20:01:03.904-0400] {processor.py:161} INFO - Started process (PID=40512) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:01:03.905-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:01:03.906-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:01:03.906-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:01:03.907-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:01:03.942-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.041 seconds
+[2026-06-28T20:02:44.215-0400] {processor.py:161} INFO - Started process (PID=40619) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:02:44.216-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:02:44.216-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:02:44.216-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:02:44.217-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:02:44.251-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.038 seconds
+[2026-06-28T20:03:53.121-0400] {processor.py:161} INFO - Started process (PID=40877) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:03:53.123-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:03:53.123-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:03:53.123-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:03:53.125-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:03:53.158-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.045 seconds
+[2026-06-28T20:05:00.406-0400] {processor.py:161} INFO - Started process (PID=44980) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:05:00.407-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:05:00.407-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:05:00.407-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:05:00.409-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:05:00.441-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.036 seconds
+[2026-06-28T20:06:04.195-0400] {processor.py:161} INFO - Started process (PID=45039) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:06:04.196-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:06:04.197-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:06:04.197-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:06:04.199-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:06:04.227-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.034 seconds
+[2026-06-28T20:07:09.362-0400] {processor.py:161} INFO - Started process (PID=45094) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:07:09.363-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:07:09.363-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:07:09.363-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:07:09.365-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:07:09.392-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.032 seconds
+[2026-06-28T20:08:16.049-0400] {processor.py:161} INFO - Started process (PID=45389) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:08:16.051-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:08:16.051-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:08:16.051-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:08:16.054-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:08:16.080-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.033 seconds
+[2026-06-28T20:09:25.259-0400] {processor.py:161} INFO - Started process (PID=46129) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:09:25.260-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:09:25.260-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:09:25.260-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:09:25.261-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:09:25.288-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.031 seconds
+[2026-06-28T20:09:29.029-0400] {processor.py:161} INFO - Started process (PID=46139) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:09:29.029-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:09:29.029-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:09:29.029-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:09:29.030-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:09:29.060-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.033 seconds
+[2026-06-28T20:11:14.029-0400] {processor.py:161} INFO - Started process (PID=46814) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:11:14.030-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:11:14.031-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:11:14.031-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:11:14.032-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:11:14.070-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.045 seconds
+[2026-06-28T20:12:56.478-0400] {processor.py:161} INFO - Started process (PID=46935) to work on /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:12:56.480-0400] {processor.py:830} INFO - Processing file /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py for tasks to queue
+[2026-06-28T20:12:56.480-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:12:56.480-0400] {dagbag.py:540} INFO - Filling up the DagBag from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:12:56.482-0400] {processor.py:842} WARNING - No viable dags retrieved from /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py
+[2026-06-28T20:12:56.509-0400] {processor.py:183} INFO - Processing /opt/anaconda3/lib/python3.12/site-packages/airflow/example_dags/plugins/listener_plugin.py took 0.033 seconds

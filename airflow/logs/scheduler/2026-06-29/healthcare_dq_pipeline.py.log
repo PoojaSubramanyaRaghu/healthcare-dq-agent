@@ -1,0 +1,21 @@
+[2026-06-28T20:09:22.936-0400] {processor.py:161} INFO - Started process (PID=46125) to work on /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py
+[2026-06-28T20:09:22.937-0400] {processor.py:830} INFO - Processing file /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py for tasks to queue
+[2026-06-28T20:09:22.937-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:09:22.937-0400] {dagbag.py:540} INFO - Filling up the DagBag from /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py
+[2026-06-28T20:09:22.949-0400] {processor.py:840} INFO - DAG(s) 'healthcare_dq_pipeline' retrieved from /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py
+[2026-06-28T20:09:22.960-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:09:22.960-0400] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-06-28T20:09:22.988-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:09:22.988-0400] {dag.py:3954} INFO - Setting next_dagrun for healthcare_dq_pipeline to 2026-06-28 00:00:00+00:00, run_after=2026-06-29 00:00:00+00:00
+[2026-06-28T20:09:22.995-0400] {processor.py:183} INFO - Processing /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py took 0.060 seconds
+[2026-06-28T20:11:08.138-0400] {processor.py:161} INFO - Started process (PID=46801) to work on /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py
+[2026-06-28T20:11:08.140-0400] {processor.py:830} INFO - Processing file /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py for tasks to queue
+[2026-06-28T20:11:08.140-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:11:08.140-0400] {dagbag.py:540} INFO - Filling up the DagBag from /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py
+[2026-06-28T20:11:08.152-0400] {processor.py:840} INFO - DAG(s) 'healthcare_dq_pipeline' retrieved from /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py
+[2026-06-28T20:11:08.163-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:11:08.163-0400] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-06-28T20:11:08.191-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:11:08.191-0400] {dag.py:3954} INFO - Setting next_dagrun for healthcare_dq_pipeline to 2026-06-28 00:00:00+00:00, run_after=2026-06-29 00:00:00+00:00
+[2026-06-28T20:11:08.198-0400] {processor.py:183} INFO - Processing /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py took 0.061 seconds
+[2026-06-28T20:12:50.082-0400] {processor.py:161} INFO - Started process (PID=46932) to work on /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py
+[2026-06-28T20:12:50.083-0400] {processor.py:830} INFO - Processing file /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py for tasks to queue
+[2026-06-28T20:12:50.084-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:12:50.084-0400] {dagbag.py:540} INFO - Filling up the DagBag from /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py
+[2026-06-28T20:12:50.098-0400] {processor.py:840} INFO - DAG(s) 'healthcare_dq_pipeline' retrieved from /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py
+[2026-06-28T20:12:50.169-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:12:50.168-0400] {dag.py:3096} INFO - Sync 1 DAGs
+[2026-06-28T20:12:50.175-0400] {logging_mixin.py:188} INFO - [2026-06-28T20:12:50.175-0400] {dag.py:3954} INFO - Setting next_dagrun for healthcare_dq_pipeline to 2026-06-28 00:00:00+00:00, run_after=2026-06-29 00:00:00+00:00
+[2026-06-28T20:12:50.183-0400] {processor.py:183} INFO - Processing /Users/poojaraghu/Desktop/healthcare-dq-agent/dags/healthcare_dq_pipeline.py took 0.103 seconds

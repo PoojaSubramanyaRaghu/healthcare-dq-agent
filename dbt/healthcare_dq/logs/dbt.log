@@ -1220,3 +1220,468 @@ where value_field not in (
 Finished 'test' successfully for target 'dev' [2.2s]
 Processed: 9 tests
 Summary: 9 total | 9 success
+==================== 2026-06-29T03:15:06.413553Z | 019f115f-9c1e-7a53-9e00-92bb730d91fd ====================
+03:15:06.415367 [info ]: dbt-core 2.0.0-alpha.2
+03:15:06.418802 [info ]: Started loading project
+03:15:06.433112 [info ]: Loading ~/.dbt/profiles.yml
+03:15:06.460952 [debug]:    Started loading packages
+03:15:06.471601 [debug]:     Loaded [  0.01s] packages
+03:15:06.475645 [info ]: Finished loading project [  0.06s]
+03:15:06.477729 [info ]: Started parsing
+03:15:06.510655 [debug]: Finished parsing models/staging/schema.yml [  0.01s]
+03:15:06.510922 [debug]: Finished parsing models/staging/sources.yml [  0.00s]
+03:15:06.525312 [debug]: Finished parsing models/marts/mart_hospital_quality.sql [  0.01s]
+03:15:06.525706 [debug]: Finished parsing models/staging/stg_cms_inpatient.sql [  0.00s]
+03:15:06.532445 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_avg_medicare_payment.sql [  0.00s]
+03:15:06.532615 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_avg_submitted_charge.sql [  0.00s]
+03:15:06.532770 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_avg_total_payment.sql [  0.00s]
+03:15:06.532920 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_drg_code.sql [  0.00s]
+03:15:06.533068 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_hospital_name.sql [  0.00s]
+03:15:06.533229 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_provider_ccn.sql [  0.00s]
+03:15:06.533443 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_state.sql [  0.00s]
+03:15:06.533946 [debug]: Finished parsing target/generic_tests/accepted_values_stg_cms_inpati_d70a7094861324546a1a8819db9f026d.sql [  0.00s]
+03:15:06.534142 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_total_discharges.sql [  0.00s]
+03:15:06.538242 [info ]: Finished parsing [  0.06s]
+03:15:06.540095 [info ]: Started scheduling
+03:15:06.540978 [info ]: Finished scheduling [  0.00s]
+03:15:06.543244 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "HEALTHCARE_DQ", schema: "RAW", table: "CMS_INPATIENT_RAW" }) and interval: None
+03:15:06.552881 [info ]: Started building task graph
+03:15:06.557219 [info ]: Finished building task graph [  0.00s]
+03:15:09.744894 [debug]: Query executed on node unknown:
+show terse schemas in database HEALTHCARE_DQ
+    limit 10000
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:15:09.748464 [info ]: Started rendering (2 nodes)
+03:15:09.748723 [info ]: Started model STAGING.stg_cms_inpatient
+03:15:09.748973 [debug]: Started rendering model STAGING.stg_cms_inpatient
+03:15:09.752338 [debug]: Compiled SQL for node model.healthcare_dq.stg_cms_inpatient at target/compiled/healthcare_dq/models/staging/stg_cms_inpatient.sql
+03:15:09.753009 [debug]: Finished rendering [  0.00s] model STAGING.stg_cms_inpatient [success]
+03:15:09.753038 [info ]: Started running (2 nodes)
+03:15:09.753043 [info ]: Started running model STAGING.stg_cms_inpatient
+03:15:10.043075 [debug]: Query executed on node model.healthcare_dq.stg_cms_inpatient:
+SHOW OBJECTS IN SCHEMA "HEALTHCARE_DQ"."STAGING" LIMIT 10000
+03:15:10.045032 [debug]: Writing runtime sql for node "model.healthcare_dq.stg_cms_inpatient"
+03:15:10.557597 [debug]: Query executed on node model.healthcare_dq.stg_cms_inpatient:
+create or replace   view HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+  
+  
+  
+  
+  as (
+    
+
+SELECT
+    LPAD(RNDRNG_PRVDR_CCN::VARCHAR, 6, '0')        AS provider_ccn,
+    RNDRNG_PRVDR_ORG_NAME                           AS hospital_name,
+    RNDRNG_PRVDR_CITY                               AS city,
+    RNDRNG_PRVDR_STATE_ABRVTN                       AS state,
+    LPAD(RNDRNG_PRVDR_ZIP5::VARCHAR, 5, '0')        AS zip_code,
+    RNDRNG_PRVDR_STATE_FIPS::VARCHAR                AS state_fips,
+    RNDRNG_PRVDR_RUCA::FLOAT                        AS ruca_code,
+    RNDRNG_PRVDR_RUCA_DESC                          AS ruca_description,
+    LPAD(DRG_CD::VARCHAR, 3, '0')                   AS drg_code,
+    DRG_DESC                                        AS drg_description,
+    TOT_DSCHRGS::INTEGER                            AS total_discharges,
+    AVG_SUBMTD_CVRD_CHRG::FLOAT                     AS avg_submitted_charge,
+    AVG_TOT_PYMT_AMT::FLOAT                         AS avg_total_payment,
+    AVG_MDCR_PYMT_AMT::FLOAT                        AS avg_medicare_payment,
+    ROUND(AVG_MDCR_PYMT_AMT / NULLIF(AVG_TOT_PYMT_AMT, 0) * 100, 2) AS medicare_coverage_pct,
+    ROUND(AVG_SUBMTD_CVRD_CHRG - AVG_TOT_PYMT_AMT, 2) AS avg_charge_payment_gap,
+    CURRENT_TIMESTAMP()                             AS _loaded_at,
+    '2024'                                          AS data_year
+FROM HEALTHCARE_DQ.RAW.CMS_INPATIENT_RAW
+  )
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.healthcare_dq.stg_cms_inpatient", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:15:10.559657 [info ]: Finished running [  0.81s] model STAGING.stg_cms_inpatient [success]
+03:15:10.559667 [info ]:  Succeeded [  0.81s] model STAGING.stg_cms_inpatient (view)
+03:15:10.559705 [info ]: Started model MARTS.mart_hospital_quality
+03:15:10.559714 [debug]: Started rendering model MARTS.mart_hospital_quality
+03:15:10.560309 [debug]: Compiled SQL for node model.healthcare_dq.mart_hospital_quality at target/compiled/healthcare_dq/models/marts/mart_hospital_quality.sql
+03:15:10.560361 [debug]: Finished rendering [  0.00s] model MARTS.mart_hospital_quality [success]
+03:15:10.560369 [info ]: Finished rendering [  0.81s] (2 nodes, 0 skipped, 0 errors)
+03:15:10.560380 [info ]: Started running model MARTS.mart_hospital_quality
+03:15:10.714545 [debug]: Query executed on node model.healthcare_dq.mart_hospital_quality:
+SHOW OBJECTS IN SCHEMA "HEALTHCARE_DQ"."MARTS" LIMIT 10000
+03:15:10.715302 [debug]: Writing runtime sql for node "model.healthcare_dq.mart_hospital_quality"
+03:15:12.912164 [debug]: Query executed on node model.healthcare_dq.mart_hospital_quality:
+create or replace transient  table HEALTHCARE_DQ.MARTS.mart_hospital_quality
+    
+    
+    
+    
+    as (
+
+SELECT
+    provider_ccn,
+    hospital_name,
+    city,
+    state,
+    zip_code,
+    COUNT(DISTINCT drg_code)                        AS unique_drg_codes,
+    SUM(total_discharges)                           AS total_discharges,
+    ROUND(AVG(total_discharges), 2)                 AS avg_discharges_per_drg,
+    ROUND(AVG(avg_submitted_charge), 2)             AS avg_submitted_charge,
+    ROUND(AVG(avg_total_payment), 2)                AS avg_total_payment,
+    ROUND(AVG(avg_medicare_payment), 2)             AS avg_medicare_payment,
+    ROUND(AVG(medicare_coverage_pct), 2)            AS avg_medicare_coverage_pct,
+    ROUND(AVG(avg_charge_payment_gap), 2)           AS avg_charge_payment_gap,
+    SUM(CASE WHEN total_discharges <= 10 THEN 1 ELSE 0 END) AS low_discharge_count,
+    SUM(CASE WHEN avg_submitted_charge < avg_total_payment THEN 1 ELSE 0 END) AS charge_less_than_payment_count,
+    CURRENT_TIMESTAMP()                             AS _updated_at
+FROM HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+GROUP BY 1, 2, 3, 4, 5
+    )
+
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.healthcare_dq.mart_hospital_quality", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:15:12.913067 [info ]: Finished running [  2.35s] model MARTS.mart_hospital_quality [success]
+03:15:12.913078 [info ]: Finished running [  3.16s] (2 nodes, 0 skipped, 0 errors)
+03:15:12.913082 [info ]:  Succeeded [  2.35s] model MARTS.mart_hospital_quality (table)
+03:15:12.963897 [info ]: 
+==================== Execution Summary =====================
+Finished 'run' successfully for target 'dev' [6.6s]
+Processed: 2 models
+Summary: 2 total | 2 success
+==================== 2026-06-29T03:17:22.330490Z | 019f1161-af0e-7911-bdbf-b12a07896a6f ====================
+03:17:22.332499 [info ]: dbt-core 2.0.0-alpha.2
+03:17:22.336276 [info ]: Started loading project
+03:17:22.350497 [info ]: Loading ~/.dbt/profiles.yml
+03:17:22.374856 [debug]:    Started loading packages
+03:17:22.379562 [debug]:     Loaded [  0.00s] packages
+03:17:22.383533 [info ]: Finished loading project [  0.05s]
+03:17:22.385430 [info ]: Started parsing
+03:17:22.417422 [debug]: Finished parsing models/staging/schema.yml [  0.01s]
+03:17:22.417969 [debug]: Finished parsing models/staging/sources.yml [  0.00s]
+03:17:22.430290 [debug]: Finished parsing models/marts/mart_hospital_quality.sql [  0.01s]
+03:17:22.430791 [debug]: Finished parsing models/staging/stg_cms_inpatient.sql [  0.00s]
+03:17:22.435783 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_avg_medicare_payment.sql [  0.00s]
+03:17:22.435952 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_avg_submitted_charge.sql [  0.00s]
+03:17:22.436107 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_avg_total_payment.sql [  0.00s]
+03:17:22.436257 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_drg_code.sql [  0.00s]
+03:17:22.436405 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_hospital_name.sql [  0.00s]
+03:17:22.436565 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_provider_ccn.sql [  0.00s]
+03:17:22.436719 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_state.sql [  0.00s]
+03:17:22.436961 [debug]: Finished parsing target/generic_tests/accepted_values_stg_cms_inpati_d70a7094861324546a1a8819db9f026d.sql [  0.00s]
+03:17:22.437110 [debug]: Finished parsing target/generic_tests/not_null_stg_cms_inpatient_total_discharges.sql [  0.00s]
+03:17:22.440836 [info ]: Finished parsing [  0.06s]
+03:17:22.442736 [info ]: Started scheduling
+03:17:22.443581 [info ]: Finished scheduling [  0.00s]
+03:17:22.445046 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "HEALTHCARE_DQ", schema: "STAGING", table: "STG_CMS_INPATIENT" }) and interval: None
+03:17:22.452166 [info ]: Started building task graph
+03:17:22.455432 [info ]: Finished building task graph [  0.00s]
+03:17:22.459096 [info ]: Started rendering (9 nodes)
+03:17:22.459354 [info ]: Started test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_total_discharges
+03:17:22.459417 [debug]: Started rendering test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_total_discharges
+03:17:22.459540 [info ]: Started test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_state
+03:17:22.459545 [debug]: Started rendering test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_state
+03:17:22.459551 [info ]: Started test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_provider_ccn
+03:17:22.459554 [debug]: Started rendering test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_provider_ccn
+03:17:22.459559 [info ]: Started test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_hospital_name
+03:17:22.459562 [debug]: Started rendering test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_hospital_name
+03:17:22.459566 [info ]: Started test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_drg_code
+03:17:22.459569 [debug]: Started rendering test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_drg_code
+03:17:22.459579 [info ]: Started test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_total_payment
+03:17:22.459582 [debug]: Started rendering test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_total_payment
+03:17:22.459586 [info ]: Started test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_submitted_charge
+03:17:22.459589 [debug]: Started rendering test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_submitted_charge
+03:17:22.459593 [info ]: Started test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_medicare_payment
+03:17:22.459596 [debug]: Started rendering test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_medicare_payment
+03:17:22.459602 [info ]: Started test DBT_TEST__AUDIT.accepted_values_stg_cms_inpatient_state__AL__AK__AZ__AR__CA__CO__CT__DE__FL__GA__HI__ID__IL__IN__IA__KS__KY__LA__ME__MD__MA__MI__MN__MS__MO__MT__NE__NV__NH__NJ__NM__NY__NC__ND__OH__OK__OR__PA__RI__SC__SD__TN__TX__UT__VT__VA__WA__WV__WI__WY__DC__PR__VI__GU__MP__AS
+03:17:22.459605 [debug]: Started rendering test DBT_TEST__AUDIT.accepted_values_stg_cms_inpatient_state__AL__AK__AZ__AR__CA__CO__CT__DE__FL__GA__HI__ID__IL__IN__IA__KS__KY__LA__ME__MD__MA__MI__MN__MS__MO__MT__NE__NV__NH__NJ__NM__NY__NC__ND__OH__OK__OR__PA__RI__SC__SD__TN__TX__UT__VT__VA__WA__WV__WI__WY__DC__PR__VI__GU__MP__AS
+03:17:22.479649 [debug]: Compiled SQL for node test.healthcare_dq.not_null_stg_cms_inpatient_hospital_name.7c7cc7efda at target/compiled/healthcare_dq/target/generic_tests/not_null_stg_cms_inpatient_hospital_name.sql
+03:17:22.479650 [debug]: Compiled SQL for node test.healthcare_dq.not_null_stg_cms_inpatient_avg_total_payment.52c5fdde42 at target/compiled/healthcare_dq/target/generic_tests/not_null_stg_cms_inpatient_avg_total_payment.sql
+03:17:22.479659 [debug]: Compiled SQL for node test.healthcare_dq.not_null_stg_cms_inpatient_avg_medicare_payment.6adf292b65 at target/compiled/healthcare_dq/target/generic_tests/not_null_stg_cms_inpatient_avg_medicare_payment.sql
+03:17:22.479647 [debug]: Compiled SQL for node test.healthcare_dq.accepted_values_stg_cms_inpatient_state__AL__AK__AZ__AR__CA__CO__CT__DE__FL__GA__HI__ID__IL__IN__IA__KS__KY__LA__ME__MD__MA__MI__MN__MS__MO__MT__NE__NV__NH__NJ__NM__NY__NC__ND__OH__OK__OR__PA__RI__SC__SD__TN__TX__UT__VT__VA__WA__WV__WI__WY__DC__PR__VI__GU__MP__AS.a270fd732c at target/compiled/healthcare_dq/target/generic_tests/accepted_values_stg_cms_inpati_d70a7094861324546a1a8819db9f026d.sql
+03:17:22.479661 [debug]: Compiled SQL for node test.healthcare_dq.not_null_stg_cms_inpatient_total_discharges.d68455db71 at target/compiled/healthcare_dq/target/generic_tests/not_null_stg_cms_inpatient_total_discharges.sql
+03:17:22.479660 [debug]: Compiled SQL for node test.healthcare_dq.not_null_stg_cms_inpatient_avg_submitted_charge.d72af28b0f at target/compiled/healthcare_dq/target/generic_tests/not_null_stg_cms_inpatient_avg_submitted_charge.sql
+03:17:22.479663 [debug]: Compiled SQL for node test.healthcare_dq.not_null_stg_cms_inpatient_provider_ccn.9b10c7ad4f at target/compiled/healthcare_dq/target/generic_tests/not_null_stg_cms_inpatient_provider_ccn.sql
+03:17:22.479646 [debug]: Compiled SQL for node test.healthcare_dq.not_null_stg_cms_inpatient_state.65388403cb at target/compiled/healthcare_dq/target/generic_tests/not_null_stg_cms_inpatient_state.sql
+03:17:22.479671 [debug]: Compiled SQL for node test.healthcare_dq.not_null_stg_cms_inpatient_drg_code.aed91c6d3f at target/compiled/healthcare_dq/target/generic_tests/not_null_stg_cms_inpatient_drg_code.sql
+03:17:22.480655 [debug]: Finished rendering [  0.02s] test DBT_TEST__AUDIT.accepted_values_stg_cms_inpatient_state__AL__AK__AZ__AR__CA__CO__CT__DE__FL__GA__HI__ID__IL__IN__IA__KS__KY__LA__ME__MD__MA__MI__MN__MS__MO__MT__NE__NV__NH__NJ__NM__NY__NC__ND__OH__OK__OR__PA__RI__SC__SD__TN__TX__UT__VT__VA__WA__WV__WI__WY__DC__PR__VI__GU__MP__AS [success]
+03:17:22.480796 [info ]: Started running (9 nodes)
+03:17:22.480801 [info ]: Started running test DBT_TEST__AUDIT.accepted_values_stg_cms_inpatient_state__AL__AK__AZ__AR__CA__CO__CT__DE__FL__GA__HI__ID__IL__IN__IA__KS__KY__LA__ME__MD__MA__MI__MN__MS__MO__MT__NE__NV__NH__NJ__NM__NY__NC__ND__OH__OK__OR__PA__RI__SC__SD__TN__TX__UT__VT__VA__WA__WV__WI__WY__DC__PR__VI__GU__MP__AS
+03:17:22.480811 [debug]: Finished rendering [  0.02s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_total_payment [success]
+03:17:22.480819 [info ]: Started running test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_total_payment
+03:17:22.480825 [debug]: Finished rendering [  0.02s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_submitted_charge [success]
+03:17:22.480832 [info ]: Started running test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_submitted_charge
+03:17:22.480838 [debug]: Finished rendering [  0.02s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_hospital_name [success]
+03:17:22.480843 [info ]: Started running test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_hospital_name
+03:17:22.480848 [debug]: Finished rendering [  0.02s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_provider_ccn [success]
+03:17:22.480853 [info ]: Started running test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_provider_ccn
+03:17:22.480858 [debug]: Finished rendering [  0.02s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_drg_code [success]
+03:17:22.480866 [info ]: Started running test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_drg_code
+03:17:22.480871 [debug]: Finished rendering [  0.02s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_medicare_payment [success]
+03:17:22.480877 [info ]: Started running test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_medicare_payment
+03:17:22.480882 [debug]: Finished rendering [  0.02s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_state [success]
+03:17:22.480888 [info ]: Started running test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_state
+03:17:22.480894 [debug]: Finished rendering [  0.02s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_total_discharges [success]
+03:17:22.480897 [info ]: Finished rendering [  0.02s] (9 nodes, 0 skipped, 0 errors)
+03:17:22.480902 [info ]: Started running test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_total_discharges
+03:17:22.484589 [debug]: Writing runtime sql for node "test.healthcare_dq.not_null_stg_cms_inpatient_total_discharges.d68455db71"
+03:17:22.484682 [debug]: Writing runtime sql for node "test.healthcare_dq.not_null_stg_cms_inpatient_avg_total_payment.52c5fdde42"
+03:17:22.484856 [debug]: Writing runtime sql for node "test.healthcare_dq.accepted_values_stg_cms_inpatient_state__AL__AK__AZ__AR__CA__CO__CT__DE__FL__GA__HI__ID__IL__IN__IA__KS__KY__LA__ME__MD__MA__MI__MN__MS__MO__MT__NE__NV__NH__NJ__NM__NY__NC__ND__OH__OK__OR__PA__RI__SC__SD__TN__TX__UT__VT__VA__WA__WV__WI__WY__DC__PR__VI__GU__MP__AS.a270fd732c"
+03:17:22.484873 [debug]: Writing runtime sql for node "test.healthcare_dq.not_null_stg_cms_inpatient_hospital_name.7c7cc7efda"
+03:17:22.484978 [debug]: Writing runtime sql for node "test.healthcare_dq.not_null_stg_cms_inpatient_avg_medicare_payment.6adf292b65"
+03:17:22.485014 [debug]: Writing runtime sql for node "test.healthcare_dq.not_null_stg_cms_inpatient_drg_code.aed91c6d3f"
+03:17:22.485045 [debug]: Writing runtime sql for node "test.healthcare_dq.not_null_stg_cms_inpatient_state.65388403cb"
+03:17:22.485083 [debug]: Writing runtime sql for node "test.healthcare_dq.not_null_stg_cms_inpatient_avg_submitted_charge.d72af28b0f"
+03:17:22.485157 [debug]: Writing runtime sql for node "test.healthcare_dq.not_null_stg_cms_inpatient_provider_ccn.9b10c7ad4f"
+03:17:24.252916 [debug]: Query executed on node test.healthcare_dq.not_null_stg_cms_inpatient_drg_code.aed91c6d3f:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select drg_code
+from HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+where drg_code is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.healthcare_dq.not_null_stg_cms_inpatient_drg_code.aed91c6d3f", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:17:24.252916 [debug]: Query executed on node test.healthcare_dq.not_null_stg_cms_inpatient_avg_submitted_charge.d72af28b0f:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select avg_submitted_charge
+from HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+where avg_submitted_charge is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.healthcare_dq.not_null_stg_cms_inpatient_avg_submitted_charge.d72af28b0f", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:17:24.255720 [info ]: Finished running [  1.77s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_submitted_charge [pass]
+03:17:24.255731 [info ]:     Passed [  1.79s] test  not_null_stg_cms_inpatient_avg_submitted_charge
+03:17:24.255900 [info ]: Finished running [  1.78s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_drg_code [pass]
+03:17:24.255906 [info ]:     Passed [  1.80s] test  not_null_stg_cms_inpatient_drg_code
+03:17:24.403844 [debug]: Query executed on node test.healthcare_dq.not_null_stg_cms_inpatient_avg_total_payment.52c5fdde42:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select avg_total_payment
+from HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+where avg_total_payment is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.healthcare_dq.not_null_stg_cms_inpatient_avg_total_payment.52c5fdde42", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:17:24.404313 [info ]: Finished running [  1.92s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_total_payment [pass]
+03:17:24.404328 [info ]:     Passed [  1.94s] test  not_null_stg_cms_inpatient_avg_total_payment
+03:17:24.404353 [debug]: Query executed on node test.healthcare_dq.not_null_stg_cms_inpatient_avg_medicare_payment.6adf292b65:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select avg_medicare_payment
+from HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+where avg_medicare_payment is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.healthcare_dq.not_null_stg_cms_inpatient_avg_medicare_payment.6adf292b65", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:17:24.404635 [info ]: Finished running [  1.92s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_avg_medicare_payment [pass]
+03:17:24.404645 [info ]:     Passed [  1.94s] test  not_null_stg_cms_inpatient_avg_medicare_payment
+03:17:24.466180 [debug]: Query executed on node test.healthcare_dq.not_null_stg_cms_inpatient_state.65388403cb:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select state
+from HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+where state is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.healthcare_dq.not_null_stg_cms_inpatient_state.65388403cb", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:17:24.466528 [info ]: Finished running [  1.99s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_state [pass]
+03:17:24.466535 [info ]:     Passed [  2.01s] test  not_null_stg_cms_inpatient_state
+03:17:24.474810 [debug]: Query executed on node test.healthcare_dq.not_null_stg_cms_inpatient_hospital_name.7c7cc7efda:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select hospital_name
+from HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+where hospital_name is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.healthcare_dq.not_null_stg_cms_inpatient_hospital_name.7c7cc7efda", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:17:24.475106 [info ]: Finished running [  1.99s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_hospital_name [pass]
+03:17:24.475113 [info ]:     Passed [  2.02s] test  not_null_stg_cms_inpatient_hospital_name
+03:17:24.495695 [debug]: Query executed on node test.healthcare_dq.not_null_stg_cms_inpatient_total_discharges.d68455db71:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select total_discharges
+from HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+where total_discharges is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.healthcare_dq.not_null_stg_cms_inpatient_total_discharges.d68455db71", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:17:24.496216 [info ]: Finished running [  2.02s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_total_discharges [pass]
+03:17:24.496227 [info ]:     Passed [  2.04s] test  not_null_stg_cms_inpatient_total_discharges
+03:17:24.497252 [debug]: Query executed on node test.healthcare_dq.not_null_stg_cms_inpatient_provider_ccn.9b10c7ad4f:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select provider_ccn
+from HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+where provider_ccn is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.healthcare_dq.not_null_stg_cms_inpatient_provider_ccn.9b10c7ad4f", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:17:24.497590 [info ]: Finished running [  2.02s] test DBT_TEST__AUDIT.not_null_stg_cms_inpatient_provider_ccn [pass]
+03:17:24.497600 [info ]:     Passed [  2.04s] test  not_null_stg_cms_inpatient_provider_ccn
+03:17:24.532246 [debug]: Query executed on node test.healthcare_dq.accepted_values_stg_cms_inpatient_state__AL__AK__AZ__AR__CA__CO__CT__DE__FL__GA__HI__ID__IL__IN__IA__KS__KY__LA__ME__MD__MA__MI__MN__MS__MO__MT__NE__NV__NH__NJ__NM__NY__NC__ND__OH__OK__OR__PA__RI__SC__SD__TN__TX__UT__VT__VA__WA__WV__WI__WY__DC__PR__VI__GU__MP__AS.a270fd732c:
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with all_values as (
+
+    select
+        state as value_field,
+        count(*) as n_records
+
+    from HEALTHCARE_DQ.STAGING.stg_cms_inpatient
+    group by state
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY','DC','PR','VI','GU','MP','AS'
+)
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.healthcare_dq.accepted_values_stg_cms_inpatient_state__AL__AK__AZ__AR__CA__CO__CT__DE__FL__GA__HI__ID__IL__IN__IA__KS__KY__LA__ME__MD__MA__MI__MN__MS__MO__MT__NE__NV__NH__NJ__NM__NY__NC__ND__OH__OK__OR__PA__RI__SC__SD__TN__TX__UT__VT__VA__WA__WV__WI__WY__DC__PR__VI__GU__MP__AS.a270fd732c", "profile_name": "healthcare_dq", "target_name": "dev"} */
+03:17:24.532658 [info ]: Finished running [  2.05s] test DBT_TEST__AUDIT.accepted_values_stg_cms_inpatient_state__AL__AK__AZ__AR__CA__CO__CT__DE__FL__GA__HI__ID__IL__IN__IA__KS__KY__LA__ME__MD__MA__MI__MN__MS__MO__MT__NE__NV__NH__NJ__NM__NY__NC__ND__OH__OK__OR__PA__RI__SC__SD__TN__TX__UT__VT__VA__WA__WV__WI__WY__DC__PR__VI__GU__MP__AS [pass]
+03:17:24.532666 [info ]: Finished running [  2.05s] (9 nodes, 0 skipped, 0 errors)
+03:17:24.532671 [info ]:     Passed [  2.07s] test  accepted_values_stg_cms_inpatient_state__AL__AK__AZ__AR__CA__CO__CT__DE__FL__GA__HI__ID__IL__IN__IA__KS__KY__LA__ME__MD__MA__MI__MN__MS__MO__MT__NE__NV__NH__NJ__NM__NY__NC__ND__OH__OK__OR__PA__RI__SC__SD__TN__TX__UT__VT__VA__WA__WV__WI__WY__DC__PR__VI__GU__MP__AS
+03:17:24.584905 [info ]: 
+==================== Execution Summary =====================
+Finished 'test' successfully for target 'dev' [2.3s]
+Processed: 9 tests
+Summary: 9 total | 9 success
