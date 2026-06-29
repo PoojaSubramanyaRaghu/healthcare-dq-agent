@@ -6,6 +6,8 @@ LLM-powered data quality monitoring for Medicare claims pipelines
 An end-to-end data quality agent that monitors Medicare claims data pipelines, automatically detects failures, and uses GPT-4o to generate plain-English incident reports — eliminating manual triage.
 
 ## Architecture
+## 📊 Tableau Dashboard
+[View Live Dashboard →](https://public.tableau.com/app/profile/pooja.subramanya.raghu/viz/HealthcareDataQualityAgent-MedicareClaims2024/Story1) 
 
 ## Tech Stack
 - **Orchestration:** Apache Airflow (Astro CLI)
