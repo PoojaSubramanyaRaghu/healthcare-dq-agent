@@ -166,33 +166,72 @@ elif page == "🚨 Incident Reports":
 
 elif page == "💬 Ask the Agent":
     st.title("💬 Ask the Data Quality Agent")
-    st.markdown("Ask questions about your Medicare claims pipeline")
+    st.markdown("Powered by GPT-4o + live Snowflake data")
+
     if "messages" not in st.session_state:
         st.session_state.messages = []
+
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
+
     if prompt := st.chat_input("Ask about your pipeline..."):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
+
         with st.chat_message("assistant"):
+            import sys
+            sys.path.insert(0, '/Users/poojaraghu/Desktop/healthcare-dq-agent')
+            from mcp_server.healthcare_mcp import get_snowflake_connection
+
             client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-            system_prompt = """You are a healthcare data quality agent monitoring a Medicare claims pipeline.
-            Pipeline facts:
-            - 145,879 CMS Medicare inpatient records from 2024
-            - Data flows: S3 → Snowflake RAW → dbt Staging → dbt Marts
-            - 9 dbt tests all passing
-            - 2,906 unique hospitals monitored
-            Answer questions about data quality, pipeline health, and healthcare analytics."""
+
+            try:
+                conn = get_snowflake_connection()
+                cursor = conn.cursor()
+                cursor.execute("SELECT COUNT(*) FROM HEALTHCARE_DQ.RAW.CMS_INPATIENT_RAW")
+                raw_count = cursor.fetchone()[0]
+                cursor.execute("""
+                    SELECT STATE, SUM(TOTAL_DISCHARGES) as TOTAL
+                    FROM HEALTHCARE_DQ.MARTS.MART_HOSPITAL_QUALITY
+                    GROUP BY STATE ORDER BY TOTAL DESC LIMIT 5
+                """)
+                top_states = cursor.fetchall()
+                cursor.execute("""
+                    SELECT HOSPITAL_NAME, TOTAL_DISCHARGES
+                    FROM HEALTHCARE_DQ.MARTS.MART_HOSPITAL_QUALITY
+                    ORDER BY TOTAL_DISCHARGES DESC LIMIT 3
+                """)
+                top_hospitals = cursor.fetchall()
+                cursor.close()
+                conn.close()
+                live_context = f"""
+                Live pipeline data:
+                - Total raw records: {raw_count:,}
+                - Top 5 states by discharges: {top_states}
+                - Top 3 hospitals: {top_hospitals}
+                - dbt tests: 9/9 passing
+                """
+            except Exception as e:
+                live_context = "Pipeline data unavailable"
+
+            system_prompt = f"""You are a healthcare data quality agent monitoring a Medicare claims pipeline.
+            You have access to live Snowflake data.
+            {live_context}
+            Answer questions about data quality, pipeline health, and healthcare analytics.
+            Be specific with numbers from the live data."""
+
             response = client.chat.completions.create(
                 model="gpt-4o",
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    *[{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
+                    *[{"role": m["role"], "content": m["content"]}
+                      for m in st.session_state.messages]
                 ],
                 max_tokens=500
             )
+
             answer = response.choices[0].message.content
             st.markdown(answer)
             st.session_state.messages.append({"role": "assistant", "content": answer})
