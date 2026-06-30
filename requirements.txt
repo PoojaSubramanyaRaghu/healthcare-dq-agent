@@ -1,7 +1,5 @@
 streamlit==1.37.1
-snowflake-connector-python==3.18.0
+snowflake-connector-python
 pandas
 openai
 python-dotenv
-pyopenssl==24.0.0
-cryptography==42.0.0
