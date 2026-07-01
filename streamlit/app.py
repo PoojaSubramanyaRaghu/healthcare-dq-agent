@@ -29,7 +29,8 @@ def get_snowflake_connection():
         warehouse=get_secret('SNOWFLAKE_WAREHOUSE'),
         database=get_secret('SNOWFLAKE_DATABASE'),
         schema='RAW',
-        role=get_secret('SNOWFLAKE_ROLE')
+        role=get_secret('SNOWFLAKE_ROLE'),
+        login_timeout=30
     )
 
 @st.cache_data(ttl=300)
